@@ -6,7 +6,7 @@ const _config = require('../_config');
 
 let _user;
 
-const csvFilePath='F:\\AplicacionesEmpresariales\\U3\\ejercicio01\\controllers\\Usuarios.csv'
+const csvFilePath='F:\\AplicacionesEmpresariales\\U3\\ejercicio01\\controllers\\User.csv'
 const csv = require('csvtojson');
 
 const insertarUser = async (req, res) => {
