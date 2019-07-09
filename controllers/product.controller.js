@@ -1,13 +1,14 @@
+    
 const http = require('http');
 const path = require('path');
 const status = require('http-status');
 
-let _brand;
+let _product;
 
-const createBrand = (req, res) => {
-    const brand = req.body;
+const createProduct = (req, res) => {
+    const product = req.body;
 
-    _brand.create(brand)
+    _product.create(product)
         .then((data)=> {
             res.status(200);
             res.json({msg:"Usuario creado correctamente", data: data});
@@ -18,8 +19,8 @@ const createBrand = (req, res) => {
         })
 }
 
-const findAllB = (req, res) => {
-    _brand.find()
+const findAllP = (req, res) => {
+    _product.find()
         .then ((data) =>{
             if(data.length==0){
                 res.status(status.NO_CONTENT);
@@ -36,12 +37,12 @@ const findAllB = (req, res) => {
         });
 }
 
-const findUneB = (req, res) => {
+const findUneP = (req, res) => {
     const {id}=req.params;
     const params = {
         _id:id
     };
-    _brand.findOne(params)
+    _product.findOne(params)
         .then((data) =>{
             res.status(status.OK);
             res.json({msg:"Exito!!!",data:data});
@@ -52,13 +53,13 @@ const findUneB = (req, res) => {
         });
 }
 
-const deleteByIDB = (req,res) =>{
+const deleteByIDP = (req,res) =>{
     const {id} = req.params;
 
     const params={
         _id:id
     };
-    _brand.findByIdAndRemove(params)
+    _product.findByIdAndRemove(params)
         .then((data) =>{
                 res.status(status.OK);
                 res.json({msg:"Exito!!!",data:data});
@@ -69,15 +70,15 @@ const deleteByIDB = (req,res) =>{
         });
 }
 
-const updateByIdB = (req,res) =>{
+const updateByIdP = (req,res) =>{
     const {id} = req.params;
-    const brand = req.body;
+    const product = req.body;
 
     const params = {
         _id:id
     }
     
-    _brand.findByIdAndUpdate(params,brand)
+    _product.findByIdAndUpdate(params,product)
         .then((data)=>{
             res.status(status.OK);
             res.json({msg:"Update correcto",data:data});
@@ -88,13 +89,13 @@ const updateByIdB = (req,res) =>{
         })
 }
 
-module.exports = (Brand) => {
-    _brand = Brand;
+module.exports = (Product) => {
+    _product = Product;
     return({
-        createBrand,
-        findAllB,
-        findUneB,
-        deleteByIDB,
-        updateByIdB
+        createProduct,
+        findAllP,
+        findUneP,
+        deleteByIDP,
+        updateByIdP
     });
 }
