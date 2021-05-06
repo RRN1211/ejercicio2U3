@@ -23,7 +23,7 @@
     "mongoose-double": "0.0.1",
     "path": "^0.12.7",
     "server": "^1.0.19",
-    "underscore": "^1.9.1",
+    "underscore": "^1.12.1",
     "wagner-core": "^0.2.0"
   },
   "devDependencies": {
